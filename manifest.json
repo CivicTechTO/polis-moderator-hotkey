@@ -5,12 +5,17 @@
   "version": "0.0.1",
   "permissions": [
     "activeTab",
+    "scripting",
     "storage"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
    "content_scripts": [
      {
-     "matches": ["https://*.pol.is/m/*"],
-     "js": ["content-script.js"]
+       "matches": ["https://pol.is/m/*"],
+       "js": ["content-script.js"],
+       "run_at": "document_start" // run before everything else, else there will be conflicts at pages which accept keyboard inputs ( eg:google search)
      }
    ],
   "action": {
