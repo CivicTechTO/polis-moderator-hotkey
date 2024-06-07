@@ -9,45 +9,33 @@ function getElementValue(id) {
 }
 document.addEventListener('DOMContentLoaded', function () {
   // Add your popup logic here
-  let min = 'a'.charCodeAt();
-  let max = 'z'.charCodeAt();
+  const min = 'a'.charCodeAt();
+  const max = 'z'.charCodeAt();
   let selectAcc = document.getElementById('acc');
-  let selectRej = document.getElementById('rej');
   for (var i = min; i<=max; i++){
     var opt = document.createElement('option');
     opt.value = String.fromCharCode(i);
     opt.innerHTML = String.fromCharCode(i);
     selectAcc.appendChild(opt);
+  }
+  let selectRej = document.getElementById('rej');
+  for (var i = min; i<=max; i++){
+    var opt = document.createElement('option');
+    opt.value = String.fromCharCode(i);
+    opt.innerHTML = String.fromCharCode(i);
     selectRej.appendChild(opt);
   }
-  chrome.storage.local.get(/* String or Array */["accept_hotkey",
-                                                 "reject_hotkey"], function(items){
+  chrome.storage.local.get(["accept_hotkey",
+                            "reject_hotkey"], function(items){
     //  items = [ { "phasersTo": "awesome" } ]
-    selectElement("acc", items["accept_hotkey"]);
-    selectElement("rej", items["reject_hotkey"]);
-  });
-  console.log('`polis-moderator-hotkey` loaded successfully!');
-  hotkeys('left, right', function (event, handler){
-    switch (handler.key) {
-      case 'left':
-        console.log('accept button pressing...');
-        try {
-          document.querySelector("button:contains('accept')")[0].click();
-        } catch {
-          console.warn('accept button not found');
-        }
-        break;
-      case 'right':
-        console.log('reject button pressing...');
-        try {
-          document.querySelector("button:contains('reject')")[0].click();
-        } catch {
-          console.warn('reject button not found');
-        }
-        break;
-      default: alert(event);
+    if (items["accept_hotkey"] !== undefined) {
+        selectElement("acc", items["accept_hotkey"]);
+    }
+    if (items["reject_hotkey"] !== undefined) {
+        selectElement("rej", items["reject_hotkey"]);
     }
   });
+  console.log('`polis-moderator-hotkey` loaded successfully!');
 });
 
 function storageSave(key, value) {
