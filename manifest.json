@@ -7,10 +7,12 @@
     "activeTab",
     "storage"
   ],
-  "background": {
-    "service_worker": "service_worker.js",
-    "type": "module"
-  }
+   "content_scripts": [
+     {
+     "matches": ["https://*.pol.is/m/*"],
+     "js": ["content-script.js"]
+     }
+   ],
   "action": {
     "default_popup": "popup.html",
     "icons": {
