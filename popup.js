@@ -30,9 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //  items = [ { "phasersTo": "awesome" } ]
     if (items["accept_hotkey"] !== undefined) {
         selectElement("acc", items["accept_hotkey"]);
+    } else {
+        storageSave("accept_hotkey", 'g')
+        selectElement("acc", 'g');
     }
     if (items["reject_hotkey"] !== undefined) {
         selectElement("rej", items["reject_hotkey"]);
+    } else {
+        storageSave("reject_hotkey", 'h')
+        selectElement("acc", 'h');
     }
   });
   console.log('`polis-moderator-hotkey` loaded successfully!');
