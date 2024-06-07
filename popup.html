@@ -12,10 +12,20 @@
   <h1>hotkey setting</h1>
   <p>Polis moderator can press accept and reject to the first comment on the page using following hotkeys</p>
   <form>
-    <label id="acc">accept</label>
-    <input>
-    <label id="rej">reject</label>
-    <input>
+    <label for="acc">accept</label>
+    <select id="acc" onchange="doSomething();">
+      <option value="left">left arrow</option>
+      <option value="right">right arrow</option>
+      <option value="up">up arrow</option>
+      <option value="downt">down arrow</option>
+    </select>
+    <label for="rej">reject</label>
+    <select id="rej" onchange="doSomething2();">
+      <option value="left">left arrow</option>
+      <option value="right">right arrow</option>
+      <option value="up">up arrow</option>
+      <option value="downt">down arrow</option>
+    </select>
   </form>
   <!-- Add more content as needed -->
   <script src="popup.js"></script>
