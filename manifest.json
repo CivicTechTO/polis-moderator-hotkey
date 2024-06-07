@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "PolisFastMod",
+  "description": "Chrome extension allow polis moderator to accept/reject comments with hotkeys",
+  "version": "0.0.1",
+  "action": {
+    "default_popup": "popup.html",
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+}
